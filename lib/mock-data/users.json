@@ -1,0 +1,26 @@
+[
+  {
+    "id": "user-1",
+    "name": "Long Nguyen",
+    "email": "long.nguyen@microsoft.com",
+    "organizationId": "org-1"
+  },
+  {
+    "id": "user-2",
+    "name": "Camille Dannenberg",
+    "email": "camille.dannenberg@microsoft.com",
+    "organizationId": "org-1"
+  },
+  {
+    "id": "user-3",
+    "name": "Abhinav Piyush",
+    "email": "abhinav.piyush@microsoft.com",
+    "organizationId": "org-1"
+  },
+  {
+    "id": "user-4",
+    "name": "Tanya Bansal",
+    "email": "tanya.bansal@microsoft.com",
+    "organizationId": "org-1"
+  }
+]

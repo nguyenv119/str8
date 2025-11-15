@@ -1,0 +1,89 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Biotech color palette - light mode */
+    --background: 210 40% 98%; /* slate-50 */
+    --foreground: 222 47% 11%; /* slate-900 */
+    --card: 0 0% 100%;
+    --card-foreground: 222 47% 11%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 47% 11%;
+    --primary: 142 71% 45%; /* emerald-500 */
+    --primary-foreground: 0 0% 100%;
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222 47% 11%;
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215 16% 47%; /* slate-600 */
+    --accent: 142 71% 45%; /* emerald-500 */
+    --accent-foreground: 222 47% 11%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 214 32% 91%; /* slate-200 */
+    --input: 214 32% 91%;
+    --ring: 142 71% 45%; /* emerald-500 */
+    --radius: 0.75rem; /* rounded-xl */
+    --chart-1: 142 71% 45%; /* emerald-500 */
+    --chart-2: 142 65% 50%;
+    --chart-3: 142 60% 55%;
+    --chart-4: 142 55% 60%;
+    --chart-5: 142 50% 65%;
+  }
+
+  .dark {
+    /* Biotech color palette - dark mode */
+    --background: 222 47% 4%; /* #0F1115 equivalent */
+    --foreground: 210 40% 98%;
+    --card: 222 47% 6%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222 47% 6%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 142 71% 45%; /* emerald-500 */
+    --primary-foreground: 0 0% 100%;
+    --secondary: 217 32% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217 32% 17.5%;
+    --muted-foreground: 215 20% 65.1%;
+    --accent: 142 71% 45%; /* emerald-500 */
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 217 32% 17.5%;
+    --input: 217 32% 17.5%;
+    --ring: 142 71% 45%; /* emerald-500 */
+    --chart-1: 142 71% 45%; /* emerald-500 */
+    --chart-2: 142 65% 50%;
+    --chart-3: 142 60% 55%;
+    --chart-4: 142 55% 60%;
+    --chart-5: 142 50% 65%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+@layer utilities {
+  @keyframes scroll {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+  .animate-scroll {
+    animation: scroll 30s linear infinite;
+  }
+}
+

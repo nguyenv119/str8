@@ -1,0 +1,17 @@
+node_modules
+**/node_modules
+*/dist
+**/dist
+**/.next
+/build
+/coverage
+/logs
+/temp
+/cache
+/backup
+/archive
+/old
+/temp
+/cache
+/backup
+/archive
