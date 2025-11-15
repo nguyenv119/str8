@@ -1,77 +1,45 @@
 "use client";
 
+import { useState } from "react";
 import { AppShell } from "@/components/layout/app-shell";
 import { LivePosturePanel } from "@/components/live-posture-panel";
-import { PostureScoreGauge } from "@/components/ui/posture-score-gauge";
-import { TodayStatsCard } from "@/components/ui/today-stats-card";
+import { PostureStatsCombined } from "@/components/ui/posture-stats-combined";
 import { DailyTimelineChart } from "@/components/charts/daily-timeline-chart";
 import { WeeklyTrendChart } from "@/components/charts/weekly-trend-chart";
+import { DailyLeaderboard } from "@/components/leaderboard/daily-leaderboard";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Info } from "lucide-react";
 import { useLivePosture } from "@/lib/hooks/use-live-posture";
-import { useOrgUserSelection } from "@/lib/hooks/use-org-user-selection";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Activity } from "lucide-react";
 
 export default function DashboardPage() {
-  const { orgId, userId, isHydrated } = useOrgUserSelection();
-  const { data: livePosture } = useLivePosture(orgId, userId);
+  // Use a default user for mock data (no user selector needed)
+  const { data: livePosture } = useLivePosture("org-1", "user-1");
 
-  if (!isHydrated) {
-    return (
-      <AppShell>
-        <div className="flex h-64 items-center justify-center">
-          <div className="text-slate-600">Loading...</div>
-        </div>
-      </AppShell>
-    );
-  }
-
-  if (!orgId || !userId) {
-    return (
-      <AppShell>
-        <div className="flex min-h-[60vh] items-center justify-center">
-          <Card className="w-full max-w-md">
-            <CardHeader className="text-center">
-              <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-emerald-100">
-                <Activity className="h-8 w-8 text-emerald-600" />
-              </div>
-              <CardTitle className="text-2xl">Welcome to your Posture Dashboard</CardTitle>
-            </CardHeader>
-            <CardContent className="text-center">
-              <p className="text-sm text-slate-600">
-                Select an organization and user to view your real-time posture insights.
-              </p>
-            </CardContent>
-          </Card>
-        </div>
-      </AppShell>
-    );
-  }
+  const leaderboardMock = [
+    { name: "Long Nguyen", score: 91, goodPostureTime: 78 },
+    { name: "Tanya Bansal", score: 88, goodPostureTime: 75 },
+    { name: "Abhinav Piyush", score: 85, goodPostureTime: 72 },
+    { name: "Camille Dannenberg", score: 79, goodPostureTime: 66 },
+  ];
 
   return (
     <AppShell>
       <div className="space-y-8 max-w-7xl mx-auto">
         {/* Two-column layout */}
         <div className="grid gap-8 md:grid-cols-2">
+          {/* Left: Live Posture Panel */}
           <LivePosturePanel />
+          
+          {/* Right: Stats, Charts, and Leaderboard */}
           <div className="space-y-8">
-            {livePosture && (
-              <PostureScoreGauge score={livePosture.postureScore} />
-            )}
-            <TodayStatsCard />
+            <PostureStatsCombined currentScore={livePosture?.postureScore ?? 85} />
+            <WeeklyTrendChart />
+            <DailyLeaderboard entries={leaderboardMock} />
           </div>
         </div>
 
-        {/* Charts */}
-        <div className="grid gap-8 md:grid-cols-2">
-          <DailyTimelineChart />
-          <WeeklyTrendChart />
-        </div>
-
-        {/* Footer note */}
-        <div className="mt-12 py-6 text-center text-xs text-slate-400">
-          Mock data only. In production this is fed by a continuous CV posture
-          stream.
-        </div>
+        {/* Full-width Timeline Chart */}
+        <DailyTimelineChart />
       </div>
     </AppShell>
   );

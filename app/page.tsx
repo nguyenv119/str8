@@ -10,6 +10,7 @@ import {
 import { LandingNavbar } from "@/components/layout/landing-navbar";
 import { PixelArtPlaceholder } from "@/components/ui/pixel-art-placeholder";
 import { Logo } from "@/components/ui/logo";
+import { TrustedBySection } from "@/components/ui/trusted-by-section";
 import {
   Camera,
   Activity,
@@ -168,70 +169,7 @@ export default function HomePage() {
       </section>
 
       {/* Trusted By Section */}
-      <section className="py-20 bg-white overflow-hidden">
-        <div className="container mx-auto px-6">
-          <div className="max-w-5xl mx-auto">
-            <p className="text-center text-sm font-medium text-slate-500 uppercase tracking-wider mb-12">
-              Trusted by teams and institutions like
-            </p>
-            <div className="relative">
-              <div className="flex animate-scroll gap-16 opacity-60 grayscale">
-                {[
-                  "OpenAI",
-                  "Amazon",
-                  "Apple",
-                  "Microsoft",
-                  "Google",
-                  "Meta",
-                  "Netflix",
-                  "Tesla",
-                  "IBM",
-                  "Oracle",
-                  "Salesforce",
-                  "Palantir",
-                  "McKinsey",
-                  "BCG",
-                  "Deloitte",
-                  "Accenture",
-                ].map((company, idx) => (
-                  <div
-                    key={`${company}-${idx}`}
-                    className="text-2xl font-semibold text-slate-400 whitespace-nowrap flex-shrink-0"
-                  >
-                    {company}
-                  </div>
-                ))}
-                {/* Duplicate for seamless loop */}
-                {[
-                  "OpenAI",
-                  "Amazon",
-                  "Apple",
-                  "Microsoft",
-                  "Google",
-                  "Meta",
-                  "Netflix",
-                  "Tesla",
-                  "IBM",
-                  "Oracle",
-                  "Salesforce",
-                  "Palantir",
-                  "McKinsey",
-                  "BCG",
-                  "Deloitte",
-                  "Accenture",
-                ].map((company, idx) => (
-                  <div
-                    key={`${company}-dup-${idx}`}
-                    className="text-2xl font-semibold text-slate-400 whitespace-nowrap flex-shrink-0"
-                  >
-                    {company}
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      <TrustedBySection />
 
       {/* Science Section */}
       <section id="science" className="py-32 bg-white">
@@ -299,11 +237,6 @@ export default function HomePage() {
               </CardDescription>
             </CardHeader>
           </Card>
-            </div>
-
-            {/* Diagram Placeholder */}
-            <div className="h-64 rounded-2xl overflow-hidden">
-              <PixelArtPlaceholder variant="diagram" className="h-full w-full" />
             </div>
           </div>
         </div>

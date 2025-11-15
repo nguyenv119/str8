@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { cn } from "@/lib/utils";
 
 interface PixelArtPlaceholderProps {
@@ -15,27 +16,17 @@ export function PixelArtPlaceholder({
     return (
       <div
         className={cn(
-          "relative h-full w-full rounded-2xl bg-gradient-to-br from-emerald-50 to-slate-100",
+          "relative h-full w-full rounded-2xl bg-gradient-to-br from-emerald-50 to-slate-100 overflow-hidden",
           className
         )}
       >
-        <div className="absolute inset-0 flex items-center justify-center">
-          <div className="grid grid-cols-8 gap-1 p-8">
-            {Array.from({ length: 64 }).map((_, i) => (
-              <div
-                key={i}
-                className={cn(
-                  "aspect-square rounded-sm",
-                  Math.random() > 0.7
-                    ? "bg-emerald-400"
-                    : Math.random() > 0.5
-                      ? "bg-emerald-300"
-                      : "bg-slate-200"
-                )}
-              />
-            ))}
-          </div>
-        </div>
+        <Image
+          src="/lib/images/babson.HEIC"
+          alt="Babson illustration"
+          fill
+          className="object-cover"
+          unoptimized // HEIC format requires unoptimized in Next.js
+        />
       </div>
     );
   }
