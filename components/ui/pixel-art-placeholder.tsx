@@ -21,11 +21,10 @@ export function PixelArtPlaceholder({
         )}
       >
         <Image
-          src="/lib/images/babson.HEIC"
+          src="/lib/images/babson.jpg"
           alt="Babson illustration"
           fill
-          className="object-cover"
-          unoptimized // HEIC format requires unoptimized in Next.js
+          className="object-cover rounded-2xl"
         />
       </div>
     );
