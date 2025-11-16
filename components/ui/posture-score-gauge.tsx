@@ -30,47 +30,45 @@ export function PostureScoreGauge({
   const offset = circumference - (angle / 360) * circumference;
 
   return (
-    <Card className={cn("rounded-2xl border border-slate-200 shadow-sm flex flex-col items-center justify-center", className)}>
-      <CardContent className="pt-8 pb-8 px-8">
-        <div className="text-sm text-slate-500 text-center mb-6">Posture Score</div>
-        <div className="relative flex items-center justify-center">
+    <Card className={cn("flex flex-col items-center justify-center", className)}>
+      <CardContent className="pt-6">
+        <div className="relative">
           <svg
-            width="180"
-            height="180"
+            width="160"
+            height="160"
             className="transform -rotate-90"
-            viewBox="0 0 180 180"
+            viewBox="0 0 160 160"
           >
             {/* Background circle */}
             <circle
-              cx="90"
-              cy="90"
+              cx="80"
+              cy="80"
               r={radius}
               fill="none"
               stroke="currentColor"
-              strokeWidth="10"
+              strokeWidth="12"
               className="text-slate-200"
             />
             {/* Progress circle */}
             <circle
-              cx="90"
-              cy="90"
+              cx="80"
+              cy="80"
               r={radius}
               fill="none"
               stroke="currentColor"
-              strokeWidth="10"
+              strokeWidth="12"
               strokeDasharray={circumference}
               strokeDashoffset={offset}
               strokeLinecap="round"
-              className={cn("transition-all duration-500", 
-                score >= 80 ? "text-emerald-400" : score >= 60 ? "text-emerald-500" : "text-red-400"
-              )}
+              className={cn("transition-all duration-500", strokeColor)}
             />
           </svg>
           <div className="absolute inset-0 flex flex-col items-center justify-center">
-            <div className={cn("text-4xl font-semibold tracking-tight text-slate-900", color)}>{score}</div>
+            <div className={cn("text-4xl font-medium text-slate-900", color)}>{score}</div>
+            <div className="text-xs text-slate-600">Score</div>
           </div>
         </div>
-        <div className={cn("mt-6 text-center text-sm font-medium", color)}>{status}</div>
+        <div className={cn("mt-4 text-center text-sm font-medium", color)}>{status}</div>
       </CardContent>
     </Card>
   );
